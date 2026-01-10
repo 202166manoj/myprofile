@@ -1,0 +1,163 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio Manager</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>📊 Portfolio Admin Panel</h1>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </header>
+
+        <div class="admin-content">
+            <nav class="admin-nav">
+                <button class="nav-btn active" onclick="showSection('about')">👤 About</button>
+                <button class="nav-btn" onclick="showSection('skills')">⚡ Skills</button>
+                <button class="nav-btn" onclick="showSection('experience')">💼 Experience</button>
+                <button class="nav-btn" onclick="showSection('testimonials')">💬 Testimonials</button>
+                <button class="nav-btn" onclick="showSection('blog')">📝 Blog Posts</button>
+            </nav>
+
+            <!-- About Section -->
+            <div id="about-section" class="admin-section active">
+                <h2>Edit About Section</h2>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="about-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Tagline</label>
+                    <input type="text" id="about-tagline" placeholder="e.g., Full Stack Web Developer">
+                </div>
+                <div class="form-group">
+                    <label>About Paragraph 1</label>
+                    <textarea id="about-p1" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Paragraph 2</label>
+                    <textarea id="about-p2" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Paragraph 3</label>
+                    <textarea id="about-p3" rows="3"></textarea>
+                </div>
+                <button onclick="saveAbout()" class="save-btn">💾 Save Changes</button>
+            </div>
+
+            <!-- Skills Section -->
+            <div id="skills-section" class="admin-section">
+                <h2>Manage Skills</h2>
+                <div class="add-form">
+                    <h3>Add New Skill</h3>
+                    
+                    <div class="form-group">
+                        <label>Skill Name</label>
+                        <input type="text" id="skill-name" placeholder="e.g., React">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Icon Type</label>
+                        <select id="skill-icon-type" onchange="toggleIconInput()" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            <option value="emoji">Emoji</option>
+                            <option value="image">Image URL</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="emoji-input-group">
+                        <label>Emoji Icon</label>
+                        <input type="text" id="skill-icon-emoji" placeholder="e.g., ⚛️">
+                        <small style="color: #64748b; display: block; margin-top: 0.5rem;">Enter an emoji like ⚛️ 🚀 💻 📱</small>
+                    </div>
+                    
+                    <div class="form-group" id="image-input-group" style="display: none;">
+                        <label>Image URL</label>
+                        <input type="url" id="skill-icon-image" placeholder="https://cdn.example.com/icon.svg">
+                        <small style="color: #64748b; display: block; margin-top: 0.5rem;">
+                            Example: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg
+                        </small>
+                    </div>
+                    
+                    <button onclick="addSkill()" class="add-btn">➕ Add Skill</button>
+                </div>
+                <div class="items-list" id="skills-list"></div>
+            </div>
+
+            <!-- Experience Section -->
+            <div id="experience-section" class="admin-section">
+                <h2>Manage Work Experience</h2>
+                <div class="add-form">
+                    <h3>Add New Experience</h3>
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" id="exp-title" placeholder="e.g., Senior Developer">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" id="exp-company" placeholder="e.g., ABC Tech">
+                    </div>
+                    <div class="form-group">
+                        <label>Date Range</label>
+                        <input type="text" id="exp-date" placeholder="e.g., 2023 - Present">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="exp-desc" rows="3"></textarea>
+                    </div>
+                    <button onclick="addExperience()" class="add-btn">➕ Add Experience</button>
+                </div>
+                <div class="items-list" id="experience-list"></div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div id="testimonials-section" class="admin-section">
+                <h2>Manage Testimonials</h2>
+                <div class="add-form">
+                    <h3>Add New Testimonial</h3>
+                    <div class="form-group">
+                        <label>Quote</label>
+                        <textarea id="test-quote" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Author Name</label>
+                        <input type="text" id="test-author" placeholder="e.g., John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Author Title</label>
+                        <input type="text" id="test-title" placeholder="e.g., CEO at Company">
+                    </div>
+                    <button onclick="addTestimonial()" class="add-btn">➕ Add Testimonial</button>
+                </div>
+                <div class="items-list" id="testimonials-list"></div>
+            </div>
+
+            <!-- Blog Section -->
+            <div id="blog-section" class="admin-section">
+                <h2>Manage Blog Posts</h2>
+                <div class="add-form">
+                    <h3>Add New Blog Post</h3>
+                    <div class="form-group">
+                        <label>Blog Title</label>
+                        <input type="text" id="blog-title" placeholder="e.g., Getting Started with React">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" id="blog-date" placeholder="e.g., November 8, 2025">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="blog-desc" rows="3"></textarea>
+                    </div>
+                    <button onclick="addBlog()" class="add-btn">➕ Add Blog Post</button>
+                </div>
+                <div class="items-list" id="blog-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
