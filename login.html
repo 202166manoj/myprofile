@@ -202,7 +202,7 @@
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
                 // Set login flag
                 localStorage.setItem('isAdminLoggedIn', 'true');
-                // Redirect to dashboard
+                
                 window.location.href = 'dashboard.html';
             } else {
                 errorEl.textContent = '❌ Invalid username or password!';
