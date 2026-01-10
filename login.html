@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -181,11 +181,11 @@
     </div>
 
     <script>
-        
+        // Simple authentication (username/password stored in code)
         const ADMIN_USERNAME = 'admin';
         const ADMIN_PASSWORD = 'admin123';
 
-         
+        // Check if already logged in
         if (localStorage.getItem('isAdminLoggedIn') === 'true') {
             window.location.href = 'dashboard.html';
         }
@@ -202,14 +202,13 @@
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
                 // Set login flag
                 localStorage.setItem('isAdminLoggedIn', 'true');
-                
+                // Redirect to dashboard
                 window.location.href = 'dashboard.html';
             } else {
                 errorEl.textContent = '❌ Invalid username or password!';
                 errorEl.classList.add('show');
             }
         }
-
     </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
- // Load portfolio data from localStorage
+  // Load portfolio data from localStorage
 function loadPortfolioData() {
     const saved = localStorage.getItem('portfolioData');
     if (saved) {
@@ -236,9 +236,8 @@ skillCards.forEach(card => {
     skillObserver.observe(card);
 });
 
-// Console message for developers
+ 
 console.log('%c👋 Hello Developer!', 'color: #10b981; font-size: 20px; font-weight: bold;');
 console.log('%cLike what you see? Let\'s work together!', 'color: #059669; font-size: 14px;');
 
-// Load portfolio data when page loads
 window.addEventListener('DOMContentLoaded', loadPortfolioData);

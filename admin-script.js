@@ -1,4 +1,4 @@
- // Check if user is logged in
+  // Check if user is logged in
 if (localStorage.getItem('isAdminLoggedIn') !== 'true') {
     window.location.href = 'login.html';
 }
