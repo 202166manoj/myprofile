@@ -181,11 +181,11 @@
     </div>
 
     <script>
-        // Simple authentication (username/password stored in code)
+        
         const ADMIN_USERNAME = 'admin';
         const ADMIN_PASSWORD = 'admin123';
 
-        // Check if already logged in
+         
         if (localStorage.getItem('isAdminLoggedIn') === 'true') {
             window.location.href = 'dashboard.html';
         }
@@ -209,6 +209,7 @@
                 errorEl.classList.add('show');
             }
         }
+
     </script>
 </body>
 </html>
